@@ -1,0 +1,10 @@
+.pic-popup {
+    position: fixed;
+    top: 78px;
+    left: calc(50% - 40vw);
+    min-width: 80vw;
+    min-height: 80vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
