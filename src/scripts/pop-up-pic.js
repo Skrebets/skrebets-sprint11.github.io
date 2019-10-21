@@ -1,6 +1,6 @@
 /* Класс для попапа с картинкой */
 
-import {root} from '../index.js';
+export const root = document.querySelector('.root');
 
 export class PopUpPic {
     constructor() {

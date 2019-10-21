@@ -1,31 +1,27 @@
 import "./pages/index.css";
 
-/*import avatar from './images/avatar.jpg';
-import close from './images/close.svg';
-import logo from './images/logo.svg';
-import trashIcon from './images/trash-icon.svg';*/
-
 import {Api} from './scripts/api.js';
 import {CardList} from './scripts/card-list.js';
 import {PopUpPic} from './scripts/pop-up-pic.js';
-import {formPlacesPop} from './scripts/pop-up-place.js';
+import {root} from './scripts/pop-up-pic.js';
 import {PopUpPlace} from './scripts/pop-up-place.js';
-import {formEditPop} from './scripts/pop-up-edit.js';
+import {form} from './scripts/pop-up-place.js';
+import {picLink} from './scripts/pop-up-place.js';
+import {nameCard} from './scripts/pop-up-place.js';
+import {formContainer} from './scripts/pop-up-place.js';
+import {PopUpEdit} from './scripts/pop-up-edit.js';
+import {errorUser} from './scripts/pop-up-edit.js';
+import {errorJob} from './scripts/pop-up-edit.js';
+import {profileEditContainer} from './scripts/pop-up-edit.js';
 
 const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk/cohort3' : 'https://praktikum.tk/cohort3'
 
-const form = document.forms.new;
-const picLink = form.elements.link.value;
-const nameCard = form.elements.name.value;
-
 const plasesCardList = document.querySelector('.places-list');
 
-const formContainer = document.querySelector('.popup');
 const addButton = document.querySelector('.user-info__button');
 const closeButton = document.querySelector('.popup__close');
 
 const editButton = document.querySelector('.user-info__edit-button');
-const profileEditContainer = document.querySelector('.profile-edit');
 const closeButtonEdit = document.querySelector('.close-profile-edit');
 
 const formEdit = document.forms.edit;
@@ -36,15 +32,10 @@ const userName = document.querySelector('.user-info__name');
 const userJob = document.querySelector('.user-info__job');
 const userPhoto = document.querySelector('.user-info__photo');
 
-const root = document.querySelector('.root');
-
 const addCardButton = document.querySelector('.popup__button_add');
 const saveChangesButton = document.querySelector('.popup__button_save');
 
-const errorUser = document.querySelector('.error-user');
-const errorJob = document.querySelector('.error-job');
-
-export {serverUrl, plasesCardList, picLink, nameCard, profileEditContainer, errorUser, errorJob, root, formContainer};
+export {picLink, nameCard};
 
 /* Api */
 
@@ -93,6 +84,8 @@ plasesCardList.addEventListener('click', function(event) {
 /* Для попапа карточки */
 
 
+const formPlacesPop = new PopUpPlace(formContainer);
+
 addButton.addEventListener('click', formPlacesPop.open);
   
 closeButton.addEventListener('click', formPlacesPop.close);
@@ -100,6 +93,8 @@ closeButton.addEventListener('click', formPlacesPop.close);
 
 /* Для попапа Редактировать профиль */
 
+
+const formEditPop = new PopUpEdit(profileEditContainer);
 
 editButton.addEventListener('click', formEditPop.open);
   

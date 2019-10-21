@@ -51,7 +51,12 @@
     }
 */
 
-import {formContainer, nameCard, picLink, renderAddButton} from '../index.js';
+import {renderAddButton} from '../index.js';
+
+export const form = document.forms.new;
+export const picLink = form.elements.link.value;
+export const nameCard = form.elements.name.value;
+export const formContainer = document.querySelector('.popup');
 
 export class PopUpPlace {
     construtor(container) {
@@ -70,5 +75,4 @@ export class PopUpPlace {
       form.reset();
     }
 }
-  
-export const formPlacesPop = new PopUpPlace(formContainer);
+
