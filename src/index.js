@@ -1,9 +1,18 @@
-import {api} from './scripts/api.js';
+import "./pages/index.css";
+
+/*import avatar from './images/avatar.jpg';
+import close from './images/close.svg';
+import logo from './images/logo.svg';
+import trashIcon from './images/trash-icon.svg';*/
+
+import {Api} from './scripts/api.js';
 import {CardList} from './scripts/card-list.js';
 import {PopUpPic} from './scripts/pop-up-pic.js';
 import {formPlacesPop} from './scripts/pop-up-place.js';
 import {PopUpPlace} from './scripts/pop-up-place.js';
 import {formEditPop} from './scripts/pop-up-edit.js';
+
+const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk/cohort3' : 'https://praktikum.tk/cohort3'
 
 const form = document.forms.new;
 const picLink = form.elements.link.value;
@@ -19,9 +28,9 @@ const editButton = document.querySelector('.user-info__edit-button');
 const profileEditContainer = document.querySelector('.profile-edit');
 const closeButtonEdit = document.querySelector('.close-profile-edit');
 
-/*const formEdit = document.forms.edit;
+const formEdit = document.forms.edit;
 const profileName = formEdit.elements.user.value;
-const profileAbout = formEdit.elements.job.value;*/
+const profileAbout = formEdit.elements.job.value;
 
 const userName = document.querySelector('.user-info__name');
 const userJob = document.querySelector('.user-info__job');
@@ -35,9 +44,17 @@ const saveChangesButton = document.querySelector('.popup__button_save');
 const errorUser = document.querySelector('.error-user');
 const errorJob = document.querySelector('.error-job');
 
-export {plasesCardList, picLink, nameCard, profileEditContainer, errorUser, errorJob, root, formContainer};
+export {serverUrl, plasesCardList, picLink, nameCard, profileEditContainer, errorUser, errorJob, root, formContainer};
 
 /* Api */
+
+const api = new Api({
+  url: serverUrl,
+  headers: {
+    authorization: '06ffa0b4-82eb-410e-8ee4-49b7701546c0',
+    'Content-Type': 'application/json'
+  }
+});
 
 api.getInitialCards().then((result) => new CardList(plasesCardList, result));
   
@@ -143,8 +160,6 @@ formEdit.addEventListener('submit', function(event) {
   api.postEditInfo(formName, formJob);
 
   formEdit.reset();
-
-  const formEditPop = new PopUpEdit(profileEditContainer);
 
   formEditPop.close();
 })

@@ -20,7 +20,8 @@
  */
 
 
-class Api {
+
+export class Api {
     constructor(options) {
       this.url = options['url'];
       this.headers = options['headers'];
@@ -119,10 +120,3 @@ class Api {
     }
 }
   
-export const api = new Api({
-    url: 'http://95.216.175.5/cohort3',
-    headers: {
-      authorization: '06ffa0b4-82eb-410e-8ee4-49b7701546c0',
-      'Content-Type': 'application/json'
-    }
-});

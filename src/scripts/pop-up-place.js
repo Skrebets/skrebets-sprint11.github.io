@@ -51,7 +51,7 @@
     }
 */
 
-import {formContainer, nameCard, picLink, renderAddButton} from '../script.js';
+import {formContainer, nameCard, picLink, renderAddButton} from '../index.js';
 
 export class PopUpPlace {
     construtor(container) {

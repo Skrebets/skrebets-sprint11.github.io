@@ -1,6 +1,6 @@
 /* Класс для попапа с картинкой */
 
-import {root} from '../script.js';
+import {root} from '../index.js';
 
 export class PopUpPic {
     constructor() {

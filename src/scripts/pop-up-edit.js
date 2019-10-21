@@ -1,6 +1,6 @@
 /* Класс попапа формы «Редактировать профиль» */
 
-import {profileEditContainer, errorUser, errorJob, fillInput} from '../script.js';
+import {profileEditContainer, errorUser, errorJob, fillInput} from '../index.js';
 
 class PopUpEdit {
     constructor(container) {

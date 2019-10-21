@@ -1,5 +1,5 @@
 /* Класс для хранения и отрисовки карточек */
-import {plasesCardList} from '../script.js';
+import {plasesCardList} from '../index.js';
 import {Card} from './card.js';
 
 export class CardList {
