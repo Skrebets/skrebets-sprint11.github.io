@@ -1,8 +1,12 @@
 /* Класс попапа формы «Редактировать профиль» */
 
-import {profileEditContainer, errorUser, errorJob, fillInput} from '../index.js';
+import {fillInput} from '../index.js';
 
-class PopUpEdit {
+export const errorUser = document.querySelector('.error-user');
+export const errorJob = document.querySelector('.error-job');
+export const profileEditContainer = document.querySelector('.profile-edit');
+
+export class PopUpEdit {
     constructor(container) {
       this.container = container;
     }
@@ -23,6 +27,3 @@ class PopUpEdit {
       profileEditContainer.classList.remove('popup_is-opened');
     }
 }
-  
-export const formEditPop = new PopUpEdit(profileEditContainer);
-

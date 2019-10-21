@@ -1,5 +1,4 @@
 /* Класс для хранения и отрисовки карточек */
-import {plasesCardList} from '../index.js';
 import {Card} from './card.js';
 
 export class CardList {
@@ -22,7 +21,7 @@ export class CardList {
       for (let i = 0; i < arr.length; i++) {
         const { cardElement } = new Card(arr[i]['link'], arr[i]['name']);
   
-        plasesCardList.appendChild(cardElement);
+        this.container.appendChild(cardElement);
       }
     }
 }
@@ -34,5 +33,3 @@ export class CardList {
    * нет смысла создавать класс списка если данных нет.
    */
   
-
-

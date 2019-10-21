@@ -13,45 +13,42 @@
       constructor(container) {
         this.container = container;
       }
-
       close() {
         this.container.classList.remove("popup_is-opened");
       }
-
       open(event) {
         this.container.classList.add("popup_is-opened");
       }
     }
-
     class PopUpPlace extends Popup { //класс расширяет функционал базового класса
       // construtor не нужен т.к. он полностью повторял то, что есть в базовом классе 
-
       open() {
         super.open(); // вызываем метод базового класса
         renderAddButton(nameCard, picLink);
       }
-
       close() {
         super.close(); // вызываем метод базового класса
         form.reset();
       }
     }
-
     class PopUpEdit  extends Popup{
       // construtor не нужен т.к. он полностью повторял то, что есть в базовом классе 
-
       open() {
         super.open();
         errorUser.textContent = '';
         errorJob.textContent = '';
         fillInput();
       }
-
       //close  - не нужен, т.к. полностью повторял бы базовый класс
     }
 */
 
-import {formContainer, nameCard, picLink, renderAddButton} from '../index.js';
+import {renderAddButton} from '../index.js';
+
+export const form = document.forms.new;
+export const picLink = form.elements.link.value;
+export const nameCard = form.elements.name.value;
+export const formContainer = document.querySelector('.popup');
 
 export class PopUpPlace {
     construtor(container) {
@@ -70,5 +67,3 @@ export class PopUpPlace {
       form.reset();
     }
 }
-  
-export const formPlacesPop = new PopUpPlace(formContainer);
