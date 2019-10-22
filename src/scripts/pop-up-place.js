@@ -43,11 +43,11 @@
     }
 */
 
-import {renderAddButton} from '../index.js';
+import {renderAddButton} from './validation.js';
+import {form} from './validation.js';
+import {nameCard} from './validation.js';
+import {picLink} from './validation.js';
 
-export const form = document.forms.new;
-export const picLink = form.elements.link.value;
-export const nameCard = form.elements.name.value;
 export const formContainer = document.querySelector('.popup');
 
 export class PopUpPlace {

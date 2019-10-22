@@ -5,14 +5,23 @@ import {CardList} from './scripts/card-list.js';
 import {PopUpPic} from './scripts/pop-up-pic.js';
 import {root} from './scripts/pop-up-pic.js';
 import {PopUpPlace} from './scripts/pop-up-place.js';
-import {form} from './scripts/pop-up-place.js';
-import {picLink} from './scripts/pop-up-place.js';
-import {nameCard} from './scripts/pop-up-place.js';
+import {form} from './scripts/validation.js';
+import {picLink} from './scripts/validation.js';
+import {nameCard} from './scripts/validation.js';
 import {formContainer} from './scripts/pop-up-place.js';
 import {PopUpEdit} from './scripts/pop-up-edit.js';
 import {errorUser} from './scripts/pop-up-edit.js';
 import {errorJob} from './scripts/pop-up-edit.js';
+import {userName} from './scripts/pop-up-edit.js';
+import {userJob} from './scripts/pop-up-edit.js';
 import {profileEditContainer} from './scripts/pop-up-edit.js';
+import {formEdit} from './scripts/validation.js';
+import {profileName} from './scripts/validation.js';
+import {profileAbout} from './scripts/validation.js';
+import {renderAddButton} from './scripts/validation.js';
+import {renderSaveButton} from './scripts/validation.js';
+import {addCardButton} from './scripts/validation.js';
+import {saveChangesButton} from './scripts/validation.js';
 
 const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk/cohort3' : 'https://praktikum.tk/cohort3'
 
@@ -24,18 +33,8 @@ const closeButton = document.querySelector('.popup__close');
 const editButton = document.querySelector('.user-info__edit-button');
 const closeButtonEdit = document.querySelector('.close-profile-edit');
 
-const formEdit = document.forms.edit;
-const profileName = formEdit.elements.user.value;
-const profileAbout = formEdit.elements.job.value;
-
-const userName = document.querySelector('.user-info__name');
-const userJob = document.querySelector('.user-info__job');
 const userPhoto = document.querySelector('.user-info__photo');
 
-const addCardButton = document.querySelector('.popup__button_add');
-const saveChangesButton = document.querySelector('.popup__button_save');
-
-export {picLink, nameCard};
 
 /* Api */
 
@@ -130,12 +129,9 @@ form.addEventListener('submit', function(event) {
 /* Редактирование имени и информации о себе */
 
 
-export function fillInput () {
-  formEdit.elements.user.value = userName.textContent;
-  formEdit.elements.job.value = userJob.textContent; 
-}
+const popUpEdit = new PopUpEdit(profileEditContainer);
 
-fillInput();
+popUpEdit.fillInput();
 
 function editInfo(profileName, profileAbout) {
   userName.textContent = profileName;
@@ -163,16 +159,6 @@ formEdit.addEventListener('submit', function(event) {
 /* Валидация всех форм */
 
 
-export function renderAddButton(nameCard, picLink) {
-  if (picLink.length === 0 || nameCard.length === 0) {
-    addCardButton.classList.add('popup__button_unactive');
-    addCardButton.setAttribute('disabled', true);
-  } else {
-    addCardButton.classList.remove('popup__button_unactive');
-    addCardButton.removeAttribute('disabled');
-  }
-}
-
 form.addEventListener('input', function(event) {
   event.preventDefault();
 
@@ -182,16 +168,6 @@ form.addEventListener('input', function(event) {
 
   renderAddButton(formNameCard, formPicLink);
 });
-
-function renderSaveButton(profileName, profileAbout) {
-  if (profileAbout.length === 0 || profileName.length === 0) {
-    saveChangesButton.classList.add('popup__button_unactive');
-    saveChangesButton.setAttribute('disabled', true);
-  } else {
-    saveChangesButton.classList.remove('popup__button_unactive');
-    saveChangesButton.removeAttribute('disabled');
-  }
-}
 
 formEdit.addEventListener('input', function(event) {
   event.preventDefault();
